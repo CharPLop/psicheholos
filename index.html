@@ -4,55 +4,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Psiche Holos — Studio di Psicologia e Psicoterapia | Brescia</title>
-<meta name="description" content="Psiche Holos - Studio di psicologia e psicoterapia a Brescia. Percorsi individuali e di gruppo per ansia, depressione, difficoltà emotive. Prenota su WhatsApp.">
-<meta property="og:title" content="Psiche Holos — Studio di Psicologia e Psicoterapia Brescia">
-<meta property="og:description" content="Studio multidisciplinare: psicoterapia individuale, di gruppo, online. Dott.sse Tagliaferro, Marini e Nicolai.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="Psiche Holos - Studio di psicologia e psicoterapia a Brescia. Percorsi individuali, di gruppo e online per ogni età. Prenota un appuntamento.">
+<meta property="og:title" content="Psiche Holos — Studio di Psicologia e Psicoterapia">
+<meta property="og:description" content="Uno spazio di ascolto, accoglienza e cura a Brescia. Percorsi per ogni età.">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="images/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 
-<!-- GOOGLE ANALYTICS 4 — Sostituisci G-XXXXXXXXXX col tuo ID -->
+<!-- GOOGLE ANALYTICS 4 -->
+<!-- Sostituisci G-XXXXXXXXXX col tuo Measurement ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXXXXX');
-  function trackWA(l) { gtag('event','whatsapp_click',{event_category:'contatto',event_label:l}); }
-  function trackEmail(l) { gtag('event','email_click',{event_category:'contatto',event_label:l}); }
-  function trackPhone(l) { gtag('event','phone_click',{event_category:'contatto',event_label:l}); }
+  function trackWhatsApp(d) { gtag('event', 'whatsapp_click', {event_category:'contatto',event_label:d,value:1}); }
+  function trackEmail(d) { gtag('event', 'email_click', {event_category:'contatto',event_label:d,value:1}); }
+  function trackPhone(d) { gtag('event', 'phone_click', {event_category:'contatto',event_label:d,value:1}); }
 </script>
 
-<link rel="stylesheet" href="css/style.css">
+<!-- SCHEMA.ORG -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Psiche Holos — Studio di Psicologia e Psicoterapia",
+  "description": "Studio di psicologia e psicoterapia a Brescia. Percorsi individuali, di gruppo e online per ogni età.",
+  "url": "https://psicheholos.it",
+  "telephone": "+393928215608",
+  "email": "psicheholos@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Guido Zadei, 60",
+    "addressLocality": "Brescia",
+    "postalCode": "25128",
+    "addressRegion": "BS",
+    "addressCountry": "IT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.534,
+    "longitude": 10.2175
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "09:00",
+    "closes": "19:00"
+  },
+  "availableService": [
+    {"@type": "MedicalTherapy", "name": "Psicoterapia individuale"},
+    {"@type": "MedicalTherapy", "name": "Percorsi di gruppo"},
+    {"@type": "MedicalTherapy", "name": "Terapia online"},
+    {"@type": "MedicalTherapy", "name": "Supporto scolastico"},
+    {"@type": "MedicalTherapy", "name": "Sostegno alla genitorialità"}
+  ],
+  "employee": [
+    {
+      "@type": "Person",
+      "name": "Dott.ssa Ilenia Tagliaferro",
+      "jobTitle": "Psicologa Clinica - Psicoterapeuta CBT",
+      "telephone": "+393928215608"
+    },
+    {
+      "@type": "Person",
+      "name": "Dott.ssa Anna Marini",
+      "jobTitle": "Psicologa Clinica - Psicoterapeuta",
+      "telephone": "+393283570032"
+    },
+    {
+      "@type": "Person",
+      "name": "Dott.ssa Valentina Nicolai",
+      "jobTitle": "Psicologa Scolastica",
+      "telephone": "+393386086727"
+    }
+  ],
+  "sameAs": ["https://www.instagram.com/psicheholos/"]
+}
+</script>
 </head>
 <body>
+
 <!-- COOKIE BANNER -->
 <div class="cookie-banner" id="cookieBanner">
-  <span>Questo sito utilizza cookie analitici per migliorare l'esperienza. <a href="#privacy">Maggiori info</a></span>
+  Questo sito utilizza cookie tecnici per migliorare l'esperienza di navigazione.
+  <a href="privacy.html">Leggi la Privacy Policy</a>
   <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accetta</button>
 </div>
 
-<!-- WHATSAPP FLOATING -->
-<a href="https://wa.me/393928215608?text=Buongiorno,%20vorrei%20informazioni%20sullo%20studio%20Psiche%20Holos" target="_blank" class="wa-float" onclick="trackWhatsApp('studio')">
-  <span class="wa-float-label">Scrivici su WhatsApp</span>
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/393928215608?text=Buongiorno,%20vorrei%20prenotare%20un%20primo%20appuntamento%20presso%20Psiche%20Holos" target="_blank" class="wa-float" onclick="trackWhatsApp('float')">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="wa-float-label">Scrivici su WhatsApp</span>
 </a>
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-brand">
-    <img src="images/logo-psicheholos.png" alt="Psiche Holos" class="nav-logo-img">
-    <span class="nav-logo sr-only">PSICHE <span>HOLOS</span></span>
-  </a>
+  <a href="#" class="nav-logo">Psiche <span>Holos</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#chi-siamo" onclick="closeNav()">Chi Siamo</a></li>
     <li><a href="#servizi" onclick="closeNav()">Servizi</a></li>
     <li><a href="#team" onclick="closeNav()">Il Team</a></li>
     <li><a href="#prenota" onclick="closeNav()">Prenota</a></li>
-    <li><a href="#lo-studio" onclick="closeNav()">Lo Studio</a></li>
+    <li><a href="#faq" onclick="closeNav()">FAQ</a></li>
     <li><a href="#dove-siamo" onclick="closeNav()">Dove Siamo</a></li>
   </ul>
-  <button class="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -60,17 +122,16 @@
   <div class="hero-bg-leaf top-right"></div>
   <div class="hero-bg-leaf bottom-left"></div>
   <div class="hero-content">
-    <div class="hero-badge">Studio di Psicologia e Psicoterapia</div>
-    <h1>Psiche <em>Holos</em></h1>
-    <p class="hero-sub">Uno spazio di ascolto, accoglienza e cura</p>
-    <p class="hero-address">Via Guido Zadei, 60 — Brescia</p>
+    <span class="hero-badge" id="cms-hero-badge">Studio di Psicologia e Psicoterapia</span>
+    <h1 id="cms-hero-titolo">Psiche <em>Holos</em></h1>
+    <p class="hero-sub" id="cms-hero-sottotitolo">Il benessere psicologico nella sua totalità</p>
+    <p class="hero-address" id="cms-hero-indirizzo">Via Guido Zadei, 60 — Brescia</p>
     <div class="hero-cta">
-      <a href="https://wa.me/393928215608?text=Buongiorno,%20vorrei%20informazioni%20sullo%20studio%20Psiche%20Holos" target="_blank" class="btn btn-whatsapp" onclick="trackWhatsApp('studio_hero')">💬 WhatsApp</a>
-      <a href="#prenota" class="btn btn-primary">Prenota</a>
+      <a href="#prenota" class="btn btn-primary">Prenota un colloquio</a>
       <a href="#chi-siamo" class="btn btn-outline">Scopri di più</a>
     </div>
   </div>
-  <div class="scroll-hint"><span>Scopri</span><div class="scroll-line"></div></div>
+  <div class="scroll-hint"><span>Scorri</span><div class="scroll-line"></div></div>
 </section>
 
 <!-- CHI SIAMO -->
@@ -79,16 +140,16 @@
     <div class="chi-grid">
       <div class="chi-visual reveal">
         <div class="chi-visual-inner">
-          <img src="images/logo-psicheholos-large.png" alt="Psiche Holos" class="chi-visual-logo-img">
+          <div class="chi-visual-logo">PSICHE HOLOS</div>
           <div class="chi-visual-motto">Il benessere psicologico di ogni individuo è il cuore del nostro lavoro</div>
         </div>
       </div>
       <div>
         <div class="section-label reveal">Chi Siamo</div>
-        <h2 class="section-title reveal">Uno spazio per il benessere<br>nella sua <em>totalità</em></h2>
+        <h2 class="section-title reveal" id="cms-chi-titolo">Uno spazio per il benessere<br>nella sua <em>totalità</em></h2>
         <div class="section-line reveal"></div>
-        <p class="section-text reveal">Psiche Holos nasce dalla volontà di creare uno spazio che accolga il bisogno psicologico nella sua totalità. Offriamo percorsi di psicoterapia individuale e di gruppo, lavorando su ansia, depressione, difficoltà relazionali ed emotive.</p>
-        <div class="chi-values">
+        <p class="section-text reveal" id="cms-chi-testo">Psiche Holos nasce dalla volontà di creare uno spazio che accolga il bisogno psicologico nella sua totalità. Offriamo percorsi di psicoterapia individuale e di gruppo, lavorando su ansia, depressione, difficoltà relazionali ed emotive.</p>
+        <div class="chi-values" id="cms-chi-valori">
           <div class="chi-value reveal reveal-delay-1"><div class="chi-value-icon">🌿</div><div><h4>Ascolto e accoglienza</h4><p>Uno spazio sicuro dove raccontarsi per come si è oggi, senza giudizio.</p></div></div>
           <div class="chi-value reveal reveal-delay-2"><div class="chi-value-icon">🤝</div><div><h4>Approccio integrato</h4><p>Diverse metodologie nel rispetto dell'unicità di ogni persona.</p></div></div>
           <div class="chi-value reveal reveal-delay-3"><div class="chi-value-icon">🌱</div><div><h4>Crescita e cura</h4><p>Il cambiamento richiede tempo, fiducia e relazione.</p></div></div>
@@ -100,7 +161,7 @@
 
 <!-- QUOTE -->
 <div class="quote-section">
-  <p class="quote-text reveal">"Il primo passo non deve essere perfetto.<br>Deve solo essere fatto."</p>
+  <p class="quote-text reveal" id="cms-citazione">"Il primo passo non deve essere perfetto.<br>Deve solo essere fatto."</p>
   <span class="quote-leaf">🌿</span>
 </div>
 
@@ -110,7 +171,7 @@
     <div class="section-label reveal">Cosa facciamo</div>
     <h2 class="section-title reveal">Percorsi pensati per <em>ogni esigenza</em></h2>
     <div class="section-line reveal"></div>
-    <div class="servizi-grid">
+    <div class="servizi-grid" id="cms-servizi">
       <div class="servizio-card reveal"><span class="servizio-icon">💬</span><h3>Psicoterapia individuale</h3><p>Un percorso personale per affrontare ansia, depressione, difficoltà emotive e relazionali.</p></div>
       <div class="servizio-card reveal reveal-delay-1"><span class="servizio-icon">👥</span><h3>Percorsi di gruppo</h3><p>Esperienze condivise di crescita, confronto e sostegno reciproco.</p></div>
       <div class="servizio-card reveal reveal-delay-2"><span class="servizio-icon">🖥️</span><h3>Terapia online</h3><p>Sedute a distanza con la stessa qualità dello studio.</p></div>
@@ -121,13 +182,13 @@
   </div>
 </section>
 
-<!-- FASCE -->
+<!-- FASCE ETÀ -->
 <section class="fasce" id="fasce">
   <div class="container">
     <div class="section-label reveal">Per ogni fase della vita</div>
     <h2 class="section-title reveal">Ci prendiamo cura della persona <em>a ogni età</em></h2>
     <div class="section-line reveal"></div>
-    <div class="fasce-row reveal">
+    <div class="fasce-row reveal" id="cms-fasce">
       <div class="fascia"><span class="fascia-emoji">👶</span><h4>Infanzia</h4><p>Supporto nella crescita</p></div>
       <div class="fascia"><span class="fascia-emoji">🧒</span><h4>Adolescenza</h4><p>Scoperta di sé</p></div>
       <div class="fascia"><span class="fascia-emoji">🧑</span><h4>Età adulta</h4><p>Sfide quotidiane</p></div>
@@ -143,14 +204,9 @@
     <div class="section-label reveal">Il Team</div>
     <h2 class="section-title reveal">Tre professioniste, <em>un'unica missione</em></h2>
     <div class="section-line reveal"></div>
-    <div class="team-grid">
+    <div class="team-grid" id="cms-team">
       <div class="team-card reveal">
         <div class="team-avatar">
-          <!-- FOTO: 1) Metti foto-ilenia.jpg in images/ 2) Aggiungi class="has-photo" al div team-avatar 3) Decommenta img -->
-          <!-- <img src="images/foto-ilenia.jpg" class="team-photo" alt="Dott.ssa Ilenia Tagliaferro"> -->
-          <div class="team-avatar-placeholder">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
-          </div>
           <span class="team-avatar-initial">IT</span>
         </div>
         <div class="team-info">
@@ -166,11 +222,6 @@
       </div>
       <div class="team-card reveal reveal-delay-1">
         <div class="team-avatar">
-          <!-- FOTO: 1) Metti foto-anna.jpg in images/ 2) Aggiungi class="has-photo" 3) Decommenta img -->
-          <!-- <img src="images/foto-anna.jpg" class="team-photo" alt="Dott.ssa Anna Marini"> -->
-          <div class="team-avatar-placeholder">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
-          </div>
           <span class="team-avatar-initial">AM</span>
         </div>
         <div class="team-info">
@@ -186,11 +237,6 @@
       </div>
       <div class="team-card reveal reveal-delay-2">
         <div class="team-avatar">
-          <!-- FOTO: 1) Metti foto-valentina.jpg in images/ 2) Aggiungi class="has-photo" 3) Decommenta img -->
-          <!-- <img src="images/foto-valentina.jpg" class="team-photo" alt="Dott.ssa Valentina Nicolai"> -->
-          <div class="team-avatar-placeholder">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
-          </div>
           <span class="team-avatar-initial">VN</span>
         </div>
         <div class="team-info">
@@ -214,7 +260,7 @@
     <div class="section-label reveal">Il nostro approccio</div>
     <h2 class="section-title reveal">Diverse metodologie nel rispetto<br>dell'<em>unicità</em> di ogni persona</h2>
     <div class="section-line reveal"></div>
-    <div class="metodo-grid">
+    <div class="metodo-grid" id="cms-metodo">
       <div class="metodo-item reveal"><h4>🧠 Tecniche Cognitive e Comportamentali</h4><p>Approccio basato sull'evidenza scientifica per modificare schemi di pensiero disfunzionali.</p></div>
       <div class="metodo-item reveal reveal-delay-1"><h4>🧘 Mindfulness</h4><p>Pratiche di consapevolezza per ridurre lo stress e coltivare equilibrio emotivo.</p></div>
       <div class="metodo-item reveal reveal-delay-2"><h4>🎭 Psicodramma</h4><p>Esplorazione di dinamiche interne e relazionali attraverso la messa in scena.</p></div>
@@ -237,7 +283,7 @@
             <div class="prenota-method-icon pm-wa">💬</div>
             <div><h4>WhatsApp</h4><p>Scrivici — rispondiamo in giornata</p></div>
           </a>
-          <a href="mailto:psicheholos@gmail.com?subject=Richiesta%20appuntamento%20-%20Psiche%20Holos" class="prenota-method reveal reveal-delay-1" onclick="trackEmail('prenota')">
+          <a href="mailto:psicheholos@gmail.com" class="prenota-method reveal reveal-delay-1" onclick="trackEmail('prenota')">
             <div class="prenota-method-icon pm-email">✉️</div>
             <div><h4>Email</h4><p>psicheholos@gmail.com</p></div>
           </a>
@@ -260,11 +306,6 @@
       <div class="contact-form reveal" style="grid-column: 1 / -1;">
         <h3>✉️ Oppure scrivici direttamente</h3>
         <p class="form-or">Compila il form e ti ricontatteremo in giornata</p>
-        <!-- ISTRUZIONI FORM: 
-             1. Registrati GRATIS su https://web3forms.com
-             2. Copia il tuo Access Key
-             3. Sostituiscilo nel campo hidden qui sotto
-             Riceverai le email all'indirizzo con cui ti sei registrato -->
         <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="TUA_ACCESS_KEY_QUI">
           <input type="hidden" name="subject" value="Nuovo contatto da Psiche Holos">
@@ -312,7 +353,7 @@
     <div class="section-label reveal">Domande frequenti</div>
     <h2 class="section-title reveal">Tutto quello che <em>vuoi sapere</em></h2>
     <div class="section-line reveal"></div>
-    <div class="faq-list">
+    <div class="faq-list" id="cms-faq">
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">Come funziona il primo appuntamento?</button>
         <div class="faq-a">Il primo colloquio è un momento di conoscenza reciproca. Non serve preparare nulla di specifico: si racconta il motivo per cui si è chiesto aiuto, con i propri tempi. Insieme si valuta il percorso più adatto. Dura circa 50 minuti.</div>
@@ -336,46 +377,6 @@
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">Lavorate con bambini e adolescenti?</button>
         <div class="faq-a">Assolutamente sì. Il nostro team lavora con tutte le fasce d'età: infanzia, adolescenza, età adulta, genitorialità e terza età. La Dott.ssa Nicolai è inoltre specializzata in psicologia scolastica, DSA e BES.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LO STUDIO -->
-<section class="studio-gallery" id="lo-studio">
-  <div class="container">
-    <div class="section-label reveal">Lo Studio</div>
-    <h2 class="section-title reveal">Uno spazio <em>accogliente e riservato</em></h2>
-    <div class="section-line reveal"></div>
-    <div class="gallery-grid">
-      <div class="gallery-item reveal">
-        <!-- FOTO: Metti studio-1.jpg in images/ → aggiungi class="has-photo" al div → decommenta img -->
-        <!-- <img src="images/studio-1.jpg" alt="Sala d'attesa Psiche Holos"> -->
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Sala d'attesa</span>
-        </div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-1">
-        <!-- <img src="images/studio-2.jpg" alt="Studio di terapia"> -->
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Studio terapia</span>
-        </div>
-      </div>
-      <div class="gallery-item reveal reveal-delay-2">
-        <!-- <img src="images/studio-3.jpg" alt="Dettaglio dello studio"> -->
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Dettaglio</span>
-        </div>
-      </div>
-      <div class="gallery-item reveal">
-        <!-- <img src="images/studio-4.jpg" alt="Angolo relax"> -->
-        <div class="gallery-placeholder">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Angolo relax</span>
-        </div>
       </div>
     </div>
   </div>
@@ -427,7 +428,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <img src="images/logo-psicheholos.png" alt="Psiche Holos" class="footer-logo-img">
+  <div class="footer-logo">PSICHE HOLOS</div>
   <p class="footer-tagline">Il benessere psicologico di ogni individuo è il cuore del nostro lavoro</p>
   <div class="footer-links">
     <a href="#chi-siamo">Chi Siamo</a>
@@ -437,10 +438,12 @@
     <a href="#faq">FAQ</a>
     <a href="#dove-siamo">Dove Siamo</a>
     <a href="https://www.instagram.com/psicheholos/" target="_blank">Instagram</a>
+    <a href="privacy.html">Privacy Policy</a>
   </div>
   <div class="footer-line"></div>
-  <p class="footer-copy">&copy; 2025 Psiche Holos — Studio di Psicologia e Psicoterapia — Via Zadei 60, Brescia &bull; P.IVA: XXXXXXXXXXX</p>
+  <p class="footer-copy">&copy; 2026 Psiche Holos — Studio di Psicologia e Psicoterapia — Via Zadei 60, Brescia &bull; P.IVA: XXXXXXXXXXX</p>
 </footer>
+
 <script src="js/main.js"></script>
 </body>
 </html>

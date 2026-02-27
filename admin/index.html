@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Psiche Holos</title>
+<style>
+:root{--green:#4A6741;--green-d:#2D3F28;--green-l:#6B8E5B;--sage:#C5D4BF;--cream:#F7F4EC;--white:#FAFAF7;--txt:#2A2A2A;--light:#5A5A5A;--ok:#2D7F46;--err:#C0392B;--serif:'Georgia',serif;--sans:'Segoe UI',system-ui,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--cream);color:var(--txt);min-height:100vh}
+.admin-header{background:var(--green-d);color:var(--sage);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.admin-header h1{font-family:var(--serif);font-size:1.2rem}
+.admin-header a{color:var(--sage);text-decoration:none;font-size:.85rem}
+.admin-body{max-width:900px;margin:0 auto;padding:24px}
+.login-screen{display:flex;justify-content:center;align-items:center;min-height:70vh}
+.login-card{background:var(--white);border-radius:20px;padding:36px;max-width:480px;width:100%;border:1px solid var(--sage)}
+.login-card h2{font-family:var(--serif);color:var(--green-d);margin-bottom:12px}
+.login-card p{font-size:.85rem;color:var(--light);margin-bottom:20px;line-height:1.6}
+label{display:block;font-size:.82rem;font-weight:600;color:var(--green-d);margin-bottom:4px;margin-top:12px}
+input[type=text],input[type=password],textarea,select{width:100%;padding:10px 14px;border:1.5px solid var(--sage);border-radius:10px;font-family:var(--sans);font-size:.9rem;background:var(--cream);outline:none;transition:border-color .3s}
+input:focus,textarea:focus,select:focus{border-color:var(--green-l)}
+textarea{min-height:80px;resize:vertical}
+.btn{display:inline-block;padding:10px 24px;border-radius:30px;font-family:var(--sans);font-size:.85rem;font-weight:600;border:none;cursor:pointer;transition:all .3s;text-decoration:none}
+.btn-primary{background:var(--green);color:white}
+.btn-primary:hover{background:var(--green-d)}
+.btn-outline{background:transparent;color:var(--green);border:1.5px solid var(--green)}
+.btn-success{background:var(--ok);color:white}
+.btn-danger{background:var(--err);color:white;font-size:.78rem;padding:6px 14px}
+.btn-sm{font-size:.78rem;padding:8px 16px}
+.check-row{display:flex;align-items:center;gap:8px;margin-top:12px}
+.check-row input{width:auto}
+.tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;border-bottom:2px solid var(--sage);padding-bottom:10px}
+.tab{padding:8px 18px;border-radius:20px 20px 0 0;border:none;background:transparent;font-family:var(--sans);font-size:.82rem;font-weight:600;color:var(--light);cursor:pointer;transition:all .2s}
+.tab.active{background:var(--green);color:white}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.section-card{background:var(--white);border-radius:16px;padding:28px;margin-bottom:20px;border:1px solid var(--sage)}
+.section-card h2{font-family:var(--serif);font-size:1.15rem;color:var(--green-d);margin-bottom:16px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.repeater-item{background:var(--cream);border:1px solid var(--sage);border-radius:12px;padding:16px;margin-bottom:12px;position:relative}
+.repeater-item .remove-btn{position:absolute;top:8px;right:8px;background:var(--err);color:white;border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+.add-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:30px;border:1.5px dashed var(--green);background:transparent;color:var(--green);font-weight:600;cursor:pointer;font-size:.82rem;transition:all .2s}
+.add-btn:hover{background:var(--green);color:white}
+.save-bar{position:sticky;bottom:0;background:var(--white);border-top:2px solid var(--sage);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;z-index:50}
+.status{font-size:.85rem;color:var(--light)}
+.status.ok{color:var(--ok)}.status.err{color:var(--err)}
+.hidden{display:none}
+/* Images */
+.img-slot{display:flex;gap:16px;align-items:center;background:var(--cream);border-radius:14px;padding:16px;margin-bottom:12px;border:1px solid var(--sage);transition:all .2s}
+.img-slot.uploading{opacity:.6;pointer-events:none}
+.img-preview-wrap{width:80px;height:80px;border-radius:12px;overflow:hidden;background:#fff;border:1px solid var(--sage);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.img-preview-wrap.small{width:48px;height:48px;border-radius:8px}
+.img-preview{width:100%;height:100%;object-fit:cover;display:none}
+.img-preview.loaded{display:block}
+.img-preview.loaded+.img-preview-placeholder{display:none}
+.img-preview-placeholder{font-size:1.8rem}
+.img-preview-wrap.small .img-preview-placeholder{font-size:1.2rem}
+.img-slot-info{flex:1;min-width:0}
+.img-slot-label{font-weight:600;font-size:.95rem;color:var(--txt)}
+.img-slot-desc{font-size:.78rem;color:var(--light);margin-top:2px}
+.img-slot-file{font-size:.72rem;color:var(--sage);margin-top:4px;font-family:monospace}
+.img-replace-btn{cursor:pointer;white-space:nowrap}
+.img-add-area{background:var(--cream);border-radius:14px;padding:16px;border:1px dashed var(--sage)}
+.img-add-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px}
+.img-add-preview-area{display:flex;gap:16px;align-items:center;margin-top:14px;padding:14px;background:#fff;border-radius:12px;border:1px solid var(--sage)}
+.img-add-preview{width:100px;height:100px;object-fit:cover;border-radius:10px;flex-shrink:0}
+@media(max-width:600px){.field-row,.field-row-3,.img-add-row{grid-template-columns:1fr}.admin-body{padding:16px}.section-card{padding:20px}.img-slot{flex-wrap:wrap}.tabs{gap:4px}.tab{padding:6px 12px;font-size:.76rem}}
+</style>
+</head>
+<body>
+<header class="admin-header">
+  <h1>🌿 Psiche Holos — Admin</h1>
+  <a href="../index.html" target="_blank">Vedi il sito →</a>
+</header>
+
+<div class="admin-body">
+
+<!-- LOGIN -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <h2>🔐 Accesso Admin</h2>
+    <p>Per modificare il sito serve un token GitHub. Si crea una sola volta.<br>
+    <a href="https://github.com/settings/tokens/new?description=Sito+PsicheHolos&scopes=repo" target="_blank" style="color:var(--green)">→ Clicca qui per creare il token</a> (spunta "repo", poi "Generate token" e copialo).</p>
+    <label>Repository (es. charplop/psicheholos)</label>
+    <input type="text" id="repoInput" value="charplop/psicheholos" placeholder="utente/repository">
+    <label>GitHub Token</label>
+    <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx">
+    <div class="check-row">
+      <input type="checkbox" id="rememberMe">
+      <label for="rememberMe" style="margin:0">Ricorda su questo dispositivo</label>
+    </div>
+    <br>
+    <button class="btn btn-primary" onclick="doLogin()">Accedi</button>
+  </div>
+</div>
+
+<!-- EDITOR -->
+<div id="editorScreen" class="hidden">
+  <div class="tabs">
+    <button class="tab active" data-tab="hero">Hero</button>
+    <button class="tab" data-tab="chi">Chi Siamo</button>
+    <button class="tab" data-tab="servizi">Servizi</button>
+    <button class="tab" data-tab="fasce">Fasce Età</button>
+    <button class="tab" data-tab="team">Team</button>
+    <button class="tab" data-tab="metodo">Metodologie</button>
+    <button class="tab" data-tab="faq">FAQ</button>
+    <button class="tab" data-tab="contatti">Contatti</button>
+    <button class="tab" data-tab="immagini">📷 Immagini</button>
+  </div>
+
+  <!-- HERO -->
+  <div class="tab-content active" id="tab-hero">
+    <div class="section-card">
+      <h2>🌿 Hero — Prima Sezione</h2>
+      <label>Badge (es. "Studio di Psicologia...")</label>
+      <input type="text" id="hero_badge">
+      <label>Titolo</label>
+      <input type="text" id="hero_titolo">
+      <label>Sottotitolo</label>
+      <input type="text" id="hero_sottotitolo">
+      <label>Indirizzo</label>
+      <input type="text" id="hero_indirizzo">
+    </div>
+  </div>
+
+  <!-- CHI SIAMO -->
+  <div class="tab-content" id="tab-chi">
+    <div class="section-card">
+      <h2>🏠 Chi Siamo</h2>
+      <label>Titolo (usa &lt;em&gt; per corsivo)</label>
+      <input type="text" id="chi_titolo">
+      <label>Testo</label>
+      <textarea id="chi_testo" rows="4"></textarea>
+      <label>Citazione</label>
+      <textarea id="citazione" rows="2"></textarea>
+      <h3 style="margin-top:20px;font-size:1rem;color:var(--green-d)">Valori</h3>
+      <div id="valoriList"></div>
+      <button class="add-btn" onclick="addValore()">+ Aggiungi valore</button>
+    </div>
+  </div>
+
+  <!-- SERVIZI -->
+  <div class="tab-content" id="tab-servizi">
+    <div class="section-card">
+      <h2>💬 Servizi</h2>
+      <div id="serviziList"></div>
+      <button class="add-btn" onclick="addServizio()">+ Aggiungi servizio</button>
+    </div>
+  </div>
+
+  <!-- FASCE -->
+  <div class="tab-content" id="tab-fasce">
+    <div class="section-card">
+      <h2>👶 Fasce d'Età</h2>
+      <div id="fasceList"></div>
+      <button class="add-btn" onclick="addFascia()">+ Aggiungi fascia</button>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="tab-content" id="tab-team">
+    <div class="section-card">
+      <h2>👩‍⚕️ Il Team</h2>
+      <div id="teamList"></div>
+      <button class="add-btn" onclick="addMembro()">+ Aggiungi membro</button>
+    </div>
+  </div>
+
+  <!-- METODOLOGIE -->
+  <div class="tab-content" id="tab-metodo">
+    <div class="section-card">
+      <h2>🧠 Metodologie</h2>
+      <div id="metodoList"></div>
+      <button class="add-btn" onclick="addMetodo()">+ Aggiungi metodologia</button>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="tab-content" id="tab-faq">
+    <div class="section-card">
+      <h2>❓ FAQ</h2>
+      <div id="faqList"></div>
+      <button class="add-btn" onclick="addFaq()">+ Aggiungi FAQ</button>
+    </div>
+  </div>
+
+  <!-- CONTATTI -->
+  <div class="tab-content" id="tab-contatti">
+    <div class="section-card">
+      <h2>📞 Contatti</h2>
+      <div class="field-row">
+        <div><label>Telefono principale</label><input type="text" id="cont_tel"></div>
+        <div><label>Email</label><input type="text" id="cont_email"></div>
+      </div>
+      <label>Messaggio WhatsApp</label>
+      <input type="text" id="cont_wa_msg">
+      <label>Instagram Studio (senza @)</label>
+      <input type="text" id="cont_ig">
+      <label>Indirizzo (usa \n per a capo)</label>
+      <textarea id="cont_indirizzo" rows="2"></textarea>
+      <label>Orari</label>
+      <input type="text" id="cont_orari">
+      <label>Embed URL Google Maps</label>
+      <textarea id="cont_mappa" rows="2"></textarea>
+    </div>
+  </div>
+
+  <!-- IMMAGINI -->
+  <div class="tab-content" id="tab-immagini">
+    <div class="section-card">
+      <h2>📷 Immagini del Sito</h2>
+      <p style="font-size:.88rem;color:var(--light);margin-bottom:20px">Clicca "Sostituisci" per cambiare una foto. Il sito si aggiorna in ~1 minuto.</p>
+
+      <div class="img-slot" id="slot-logo">
+        <div class="img-preview-wrap">
+          <img class="img-preview" id="prev-logo" src="" alt="">
+          <div class="img-preview-placeholder">🌿</div>
+        </div>
+        <div class="img-slot-info">
+          <div class="img-slot-label">Logo Studio</div>
+          <div class="img-slot-desc">Logo nella navbar e footer</div>
+          <div class="img-slot-file">logo-psicheholos.png</div>
+        </div>
+        <div class="img-slot-actions">
+          <label class="btn btn-primary btn-sm img-replace-btn">🔄 Sostituisci
+            <input type="file" accept="image/jpeg,image/png,image/webp" hidden onchange="previewAndUpload('logo-psicheholos.png',this)">
+          </label>
+        </div>
+      </div>
+
+      <div class="img-slot" id="slot-favicon">
+        <div class="img-preview-wrap small">
+          <img class="img-preview" id="prev-favicon" src="" alt="">
+          <div class="img-preview-placeholder">🔸</div>
+        </div>
+        <div class="img-slot-info">
+          <div class="img-slot-label">Favicon</div>
+          <div class="img-slot-desc">Icona nel tab del browser</div>
+          <div class="img-slot-file">favicon.png</div>
+        </div>
+        <div class="img-slot-actions">
+          <label class="btn btn-primary btn-sm img-replace-btn">🔄 Sostituisci
+            <input type="file" accept="image/png" hidden onchange="previewAndUpload('favicon.png',this)">
+          </label>
+        </div>
+      </div>
+
+      <div id="teamPhotoSlots"></div>
+      <div id="extraImagesList"></div>
+    </div>
+
+    <div class="section-card">
+      <h2>➕ Aggiungi Nuova Immagine</h2>
+      <p style="font-size:.88rem;color:var(--light);margin-bottom:16px">Per foto extra (studio, sedi, team, ecc.)</p>
+      <div class="img-add-area" id="imgAddArea">
+        <div class="img-add-row">
+          <div><label>Tipo di foto</label>
+            <select id="newImgLabel">
+              <option value="foto-studio">Foto dello studio</option>
+              <option value="foto-team">Foto di gruppo</option>
+              <option value="foto-ilenia">Foto Ilenia</option>
+              <option value="foto-anna">Foto Anna</option>
+              <option value="foto-valentina">Foto Valentina</option>
+              <option value="altro">Altro...</option>
+            </select>
+          </div>
+          <div id="customNameWrap" class="hidden"><label>Nome personalizzato</label><input type="text" id="customImgName" placeholder="es. foto-sala-attesa"></div>
+        </div>
+        <div class="img-add-preview-area hidden" id="addPreviewArea">
+          <img id="addPreviewImg" class="img-add-preview">
+          <div style="flex:1">
+            <p id="addPreviewInfo" style="font-size:.85rem;color:var(--light)"></p>
+            <button class="btn btn-success btn-sm" onclick="confirmUploadNew()" style="margin-top:8px">✅ Conferma e Carica</button>
+            <button class="btn btn-outline btn-sm" onclick="cancelUploadNew()" style="margin-top:8px">✕ Annulla</button>
+          </div>
+        </div>
+        <label class="btn btn-outline btn-sm" id="addImgBtn" style="margin-top:10px;cursor:pointer">📁 Seleziona immagine
+          <input type="file" accept="image/jpeg,image/png,image/webp" hidden onchange="previewNewImage(this)">
+        </label>
+      </div>
+    </div>
+  </div>
+
+</div><!-- editorScreen -->
+
+<!-- SAVE BAR -->
+<div class="save-bar hidden" id="saveBar">
+  <span class="status" id="statusMsg"></span>
+  <button class="btn btn-success" onclick="saveAll()">💾 Salva e Pubblica</button>
+</div>
+
+</div><!-- admin-body -->
+
+<script>
+let REPO='', TOKEN='', CONTENT={}, CONTENT_SHA='';
+const IMG_SHAS = {};
+
+// ── TABS ──
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById('tab-'+t.dataset.tab).classList.add('active');
+}));
+
+// ── LOGIN ──
+window.addEventListener('load', () => {
+  const s = localStorage.getItem('ph_admin');
+  if (s) {
+    try {
+      const d = JSON.parse(s);
+      document.getElementById('repoInput').value = d.repo||'';
+      document.getElementById('tokenInput').value = d.token||'';
+      document.getElementById('rememberMe').checked = true;
+    } catch(e) {}
+  }
+});
+
+async function doLogin() {
+  REPO = document.getElementById('repoInput').value.trim();
+  TOKEN = document.getElementById('tokenInput').value.trim();
+  if (!REPO || !TOKEN) { alert('Inserisci repository e token'); return; }
+  if (document.getElementById('rememberMe').checked) {
+    localStorage.setItem('ph_admin', JSON.stringify({repo:REPO,token:TOKEN}));
+  } else { localStorage.removeItem('ph_admin'); }
+
+  setStatus('Caricamento...', '');
+  try {
+    const data = await githubGet('data/content.json');
+    CONTENT = JSON.parse(atob(data.content));
+    CONTENT_SHA = data.sha;
+    populateForm();
+    loadImages();
+    document.getElementById('loginScreen').classList.add('hidden');
+    document.getElementById('editorScreen').classList.remove('hidden');
+    document.getElementById('saveBar').classList.remove('hidden');
+    setStatus('✅ Contenuto caricato', 'ok');
+  } catch(e) {
+    setStatus('❌ Errore: '+e.message, 'err');
+    alert('Errore di connessione. Verifica token e repository.');
+  }
+}
+
+async function githubGet(path) {
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+    headers: {'Authorization':`token ${TOKEN}`}
+  });
+  if (!r.ok) throw new Error('GitHub: '+r.status);
+  return r.json();
+}
+
+// ── POPULATE ──
+function populateForm() {
+  const h = CONTENT.hero||{};
+  v('hero_badge', h.badge);
+  v('hero_titolo', h.titolo);
+  v('hero_sottotitolo', h.sottotitolo);
+  v('hero_indirizzo', h.indirizzo);
+
+  const ch = CONTENT.chi_siamo||{};
+  v('chi_titolo', ch.titolo);
+  v('chi_testo', ch.testo);
+  v('citazione', CONTENT.citazione);
+
+  renderRepeater('valoriList', ch.valori||[], renderValore);
+  renderRepeater('serviziList', CONTENT.servizi||[], renderServizio);
+  renderRepeater('fasceList', CONTENT.fasce||[], renderFascia);
+  renderRepeater('teamList', CONTENT.team||[], renderMembro);
+  renderRepeater('metodoList', CONTENT.metodologie||[], renderMetodo);
+  renderRepeater('faqList', CONTENT.faq||[], renderFaq);
+
+  const c = CONTENT.contatti||{};
+  v('cont_tel', c.telefono_principale);
+  v('cont_email', c.email);
+  v('cont_wa_msg', c.whatsapp_msg);
+  v('cont_ig', c.instagram_studio);
+  v('cont_indirizzo', c.indirizzo);
+  v('cont_orari', c.orari);
+  v('cont_mappa', c.mappa_embed);
+}
+
+function v(id, val) { const el=document.getElementById(id); if(el&&val) el.value=val; }
+function g(id) { const el=document.getElementById(id); return el?el.value.trim():''; }
+
+// ── REPEATERS ──
+function renderRepeater(containerId, items, renderFn) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = items.map((item, i) => renderFn(item, i)).join('');
+}
+
+function renderValore(item, i) {
+  return `<div class="repeater-item"><button class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+    <div class="field-row"><div><label>Icona</label><input type="text" class="val-icona" value="${item.icona||''}"></div>
+    <div><label>Titolo</label><input type="text" class="val-titolo" value="${esc(item.titolo)}"></div></div>
+    <label>Testo</label><textarea class="val-testo" rows="2">${esc(item.testo)}</textarea></div>`;
+}
+function addValore() { document.getElementById('valoriList').insertAdjacentHTML('beforeend', renderValore({icona:'🌿',titolo:'',testo:''}, 0)); }
+
+function renderServizio(item, i) {
+  return `<div class="repeater-item"><button class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+    <div class="field-row"><div><label>Icona</label><input type="text" class="serv-icona" value="${item.icona||''}"></div>
+    <div><label>Titolo</label><input type="text" class="serv-titolo" value="${esc(item.titolo)}"></div></div>
+    <label>Testo</label><textarea class="serv-testo" rows="2">${esc(item.testo)}</textarea></div>`;
+}
+function addServizio() { document.getElementById('serviziList').insertAdjacentHTML('beforeend', renderServizio({icona:'✨',titolo:'',testo:''}, 0)); }
+
+function renderFascia(item, i) {
+  return `<div class="repeater-item"><button class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+    <div class="field-row-3"><div><label>Emoji</label><input type="text" class="fas-emoji" value="${item.emoji||''}"></div>
+    <div><label>Titolo</label><input type="text" class="fas-titolo" value="${esc(item.titolo)}"></div>
+    <div><label>Testo</label><input type="text" class="fas-testo" value="${esc(item.testo)}"></div></div></div>`;
+}
+function addFascia() { document.getElementById('fasceList').insertAdjacentHTML('beforeend', renderFascia({emoji:'🌟',titolo:'',testo:''}, 0)); }
+
+function renderMembro(item, i) {
+  return `<div class="repeater-item"><button class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+    <div class="field-row"><div><label>Nome completo</label><input type="text" class="team-nome" value="${esc(item.nome)}"></div>
+    <div><label>Ruolo</label><input type="text" class="team-ruolo" value="${esc(item.ruolo)}"></div></div>
+    <label>Bio</label><textarea class="team-bio" rows="2">${esc(item.bio)}</textarea>
+    <div class="field-row-3"><div><label>Telefono</label><input type="text" class="team-tel" value="${item.telefono||''}"></div>
+    <div><label>Messaggio WhatsApp</label><input type="text" class="team-wa" value="${esc(item.whatsapp_msg)}"></div>
+    <div><label>Instagram (senza @)</label><input type="text" class="team-ig" value="${item.instagram||''}"></div></div>
+    <label>Nome file foto (vuoto = iniziali)</label><input type="text" class="team-foto" value="${item.foto||''}" placeholder="es. foto-ilenia.jpg"></div>`;
+}
+function addMembro() { document.getElementById('teamList').insertAdjacentHTML('beforeend', renderMembro({nome:'',ruolo:'',bio:'',telefono:'',whatsapp_msg:'',instagram:'',foto:''}, 0)); }
+
+function renderMetodo(item, i) {
+  return `<div class="repeater-item"><button class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+    <div class="field-row"><div><label>Icona</label><input type="text" class="met-icona" value="${item.icona||''}"></div>
+    <div><label>Titolo</label><input type="text" class="met-titolo" value="${esc(item.titolo)}"></div></div>
+    <label>Testo</label><textarea class="met-testo" rows="2">${esc(item.testo)}</textarea></div>`;
+}
+function addMetodo() { document.getElementById('metodoList').insertAdjacentHTML('beforeend', renderMetodo({icona:'💡',titolo:'',testo:''}, 0)); }
+
+function renderFaq(item, i) {
+  return `<div class="repeater-item"><button class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+    <label>Domanda</label><input type="text" class="faq-d" value="${esc(item.domanda)}">
+    <label>Risposta</label><textarea class="faq-r" rows="3">${esc(item.risposta)}</textarea></div>`;
+}
+function addFaq() { document.getElementById('faqList').insertAdjacentHTML('beforeend', renderFaq({domanda:'',risposta:''}, 0)); }
+
+function esc(s) { return (s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+// ── COLLECT ──
+function collectAll() {
+  return {
+    hero: { badge:g('hero_badge'), titolo:g('hero_titolo'), sottotitolo:g('hero_sottotitolo'), indirizzo:g('hero_indirizzo'), btn_prenota:"Prenota un colloquio", btn_scopri:"Scopri di più" },
+    chi_siamo: { titolo:g('chi_titolo'), testo:g('chi_testo'), valori: collectItems('valoriList', el => ({icona:el.querySelector('.val-icona').value, titolo:el.querySelector('.val-titolo').value, testo:el.querySelector('.val-testo').value})) },
+    citazione: g('citazione'),
+    servizi: collectItems('serviziList', el => ({icona:el.querySelector('.serv-icona').value, titolo:el.querySelector('.serv-titolo').value, testo:el.querySelector('.serv-testo').value})),
+    fasce: collectItems('fasceList', el => ({emoji:el.querySelector('.fas-emoji').value, titolo:el.querySelector('.fas-titolo').value, testo:el.querySelector('.fas-testo').value})),
+    team: collectItems('teamList', el => ({nome:el.querySelector('.team-nome').value, ruolo:el.querySelector('.team-ruolo').value, bio:el.querySelector('.team-bio').value, telefono:el.querySelector('.team-tel').value, whatsapp_msg:el.querySelector('.team-wa').value, instagram:el.querySelector('.team-ig').value, foto:el.querySelector('.team-foto').value})),
+    metodologie: collectItems('metodoList', el => ({icona:el.querySelector('.met-icona').value, titolo:el.querySelector('.met-titolo').value, testo:el.querySelector('.met-testo').value})),
+    faq: collectItems('faqList', el => ({domanda:el.querySelector('.faq-d').value, risposta:el.querySelector('.faq-r').value})),
+    contatti: { telefono_principale:g('cont_tel'), email:g('cont_email'), whatsapp_msg:g('cont_wa_msg'), instagram_studio:g('cont_ig'), indirizzo:g('cont_indirizzo'), orari:g('cont_orari'), mappa_embed:g('cont_mappa') }
+  };
+}
+
+function collectItems(containerId, mapFn) {
+  return [...document.getElementById(containerId).querySelectorAll('.repeater-item')].map(mapFn);
+}
+
+// ── SAVE ──
+async function saveAll() {
+  const data = collectAll();
+  const json = JSON.stringify(data, null, 2);
+  const base64 = btoa(unescape(encodeURIComponent(json)));
+
+  setStatus('Salvataggio...', '');
+  try {
+    const result = await fetch(`https://api.github.com/repos/${REPO}/contents/data/content.json`, {
+      method: 'PUT',
+      headers: {'Authorization':`token ${TOKEN}`, 'Content-Type':'application/json'},
+      body: JSON.stringify({ message:'Aggiornamento contenuti da admin', content:base64, sha:CONTENT_SHA })
+    });
+    const d = await result.json();
+    if (d.content) { CONTENT_SHA = d.content.sha; CONTENT = data; }
+    setStatus('✅ Salvato! Il sito si aggiorna in ~1 minuto.', 'ok');
+  } catch(e) {
+    setStatus('❌ Errore: '+e.message, 'err');
+  }
+}
+
+// ── IMAGES ──
+async function loadImages() {
+  try {
+    const files = await githubGet('images');
+    if (!Array.isArray(files)) return;
+    files.forEach(f => { IMG_SHAS[f.name] = f.sha; });
+
+    // Known slots
+    const known = {'logo-psicheholos.png':'prev-logo','favicon.png':'prev-favicon'};
+    for (const [name, id] of Object.entries(known)) {
+      const el = document.getElementById(id);
+      if (el && IMG_SHAS[name]) { el.src=`https://raw.githubusercontent.com/${REPO}/main/images/${name}?t=${Date.now()}`; el.classList.add('loaded'); }
+    }
+
+    // Team photo slots
+    const teamPhotos = files.filter(f => /^foto-(ilenia|anna|valentina)/i.test(f.name));
+    const tps = document.getElementById('teamPhotoSlots');
+    if (teamPhotos.length) {
+      const labels = {'foto-ilenia':'👤 Foto Ilenia','foto-anna':'👤 Foto Anna','foto-valentina':'👤 Foto Valentina'};
+      tps.innerHTML = teamPhotos.map(f => {
+        const url=`https://raw.githubusercontent.com/${REPO}/main/images/${f.name}?t=${Date.now()}`;
+        const key = Object.keys(labels).find(k => f.name.startsWith(k)) || '';
+        const label = labels[key] || `📎 ${f.name}`;
+        return `<div class="img-slot"><div class="img-preview-wrap"><img class="img-preview loaded" src="${url}" alt="${f.name}"><div class="img-preview-placeholder">👤</div></div>
+          <div class="img-slot-info"><div class="img-slot-label">${label}</div><div class="img-slot-file">${f.name}</div></div>
+          <div class="img-slot-actions"><label class="btn btn-primary btn-sm img-replace-btn">🔄 Sostituisci<input type="file" accept="image/jpeg,image/png,image/webp" hidden onchange="previewAndUpload('${f.name}',this)"></label></div></div>`;
+      }).join('');
+    }
+
+    // Extra images
+    const knownNames = [...Object.keys(known), ...teamPhotos.map(f=>f.name)];
+    const extras = files.filter(f => !knownNames.includes(f.name) && /\.(jpg|jpeg|png|webp)$/i.test(f.name));
+    const el = document.getElementById('extraImagesList');
+    el.innerHTML = extras.map(f => {
+      const url=`https://raw.githubusercontent.com/${REPO}/main/images/${f.name}?t=${Date.now()}`;
+      return `<div class="img-slot"><div class="img-preview-wrap"><img class="img-preview loaded" src="${url}"><div class="img-preview-placeholder">📎</div></div>
+        <div class="img-slot-info"><div class="img-slot-label">${f.name}</div><div class="img-slot-desc">${(f.size/1024).toFixed(0)} KB</div></div>
+        <div class="img-slot-actions"><label class="btn btn-primary btn-sm img-replace-btn">🔄 Sostituisci<input type="file" accept="image/jpeg,image/png,image/webp" hidden onchange="previewAndUpload('${f.name}',this)"></label>
+        <button class="btn btn-danger" onclick="deleteImage('${f.name}')">🗑</button></div></div>`;
+    }).join('');
+  } catch(e) {}
+}
+
+async function previewAndUpload(filename, input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 2*1024*1024) { alert('Max 2MB'); input.value=''; return; }
+  const slot = input.closest('.img-slot');
+  const prev = slot.querySelector('.img-preview');
+  const reader = new FileReader();
+  reader.onload = e => { prev.src=e.target.result; prev.classList.add('loaded'); };
+  reader.readAsDataURL(file);
+  slot.classList.add('uploading');
+  setStatus(`Caricamento ${filename}...`, '');
+  try {
+    const base64 = await fileToBase64(file);
+    const body = {message:`Aggiornata ${filename}`,content:base64};
+    if (IMG_SHAS[filename]) body.sha = IMG_SHAS[filename];
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/images/${filename}`,{method:'PUT',headers:{'Authorization':`token ${TOKEN}`,'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const d = await res.json();
+    if (d.content) IMG_SHAS[filename] = d.content.sha;
+    setStatus(`✅ ${filename} aggiornata!`, 'ok');
+  } catch(e) { setStatus('❌ '+e.message, 'err'); }
+  slot.classList.remove('uploading');
+  input.value='';
+}
+
+let pendingNewFile = null;
+document.getElementById('newImgLabel').addEventListener('change', function() {
+  document.getElementById('customNameWrap').classList.toggle('hidden', this.value !== 'altro');
+});
+
+function previewNewImage(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 2*1024*1024) { alert('Max 2MB'); input.value=''; return; }
+  pendingNewFile = file;
+  const ext = file.name.split('.').pop().toLowerCase();
+  const label = document.getElementById('newImgLabel').value;
+  const baseName = label==='altro'?(document.getElementById('customImgName').value.trim()||'immagine'):label;
+  document.getElementById('addPreviewInfo').textContent = `${baseName}.${ext} — ${(file.size/1024).toFixed(0)} KB`;
+  const reader = new FileReader();
+  reader.onload = e => { document.getElementById('addPreviewImg').src = e.target.result; };
+  reader.readAsDataURL(file);
+  document.getElementById('addPreviewArea').classList.remove('hidden');
+  document.getElementById('addImgBtn').classList.add('hidden');
+}
+function cancelUploadNew() {
+  pendingNewFile = null;
+  document.getElementById('addPreviewArea').classList.add('hidden');
+  document.getElementById('addImgBtn').classList.remove('hidden');
+}
+async function confirmUploadNew() {
+  if (!pendingNewFile) return;
+  const ext = pendingNewFile.name.split('.').pop().toLowerCase();
+  const label = document.getElementById('newImgLabel').value;
+  const baseName = label==='altro'?(document.getElementById('customImgName').value.trim().replace(/[^a-z0-9\-]/gi,'-')||'immagine'):label;
+  const filename = `${baseName}.${ext}`;
+  setStatus(`Caricamento ${filename}...`, '');
+  try {
+    const base64 = await fileToBase64(pendingNewFile);
+    const body = {message:`Aggiunta ${filename}`,content:base64};
+    if (IMG_SHAS[filename]) body.sha = IMG_SHAS[filename];
+    await fetch(`https://api.github.com/repos/${REPO}/contents/images/${filename}`,{method:'PUT',headers:{'Authorization':`token ${TOKEN}`,'Content-Type':'application/json'},body:JSON.stringify(body)});
+    setStatus(`✅ ${filename} caricata!`, 'ok');
+    cancelUploadNew();
+    loadImages();
+  } catch(e) { setStatus('❌ '+e.message, 'err'); }
+}
+async function deleteImage(filename) {
+  if (!confirm(`Eliminare ${filename}?`)) return;
+  try {
+    await fetch(`https://api.github.com/repos/${REPO}/contents/images/${filename}`,{method:'DELETE',headers:{'Authorization':`token ${TOKEN}`,'Content-Type':'application/json'},body:JSON.stringify({message:`Rimossa ${filename}`,sha:IMG_SHAS[filename]})});
+    delete IMG_SHAS[filename];
+    setStatus(`✅ ${filename} eliminata`, 'ok');
+    loadImages();
+  } catch(e) { setStatus('❌ '+e.message, 'err'); }
+}
+function fileToBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+
+// ── UTILS ──
+function setStatus(msg, type) {
+  const el = document.getElementById('statusMsg');
+  el.textContent = msg;
+  el.className = 'status' + (type ? ' '+type : '');
+}
+</script>
+</body>
+</html>
