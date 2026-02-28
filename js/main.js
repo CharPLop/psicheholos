@@ -115,6 +115,7 @@ async function loadCMS() {
             `<div class="team-avatar has-photo"><img src="images/${t.foto}" class="team-photo" alt="${t.nome}"><span class="team-avatar-initial">${initials}</span></div>` :
             `<div class="team-avatar"><span class="team-avatar-initial">${initials}</span></div>`;
           const igName = t.instagram.replace('@','');
+          const siteLink = t.sito_web ? `<a href="${t.sito_web}" target="_blank" class="team-action team-action-site">🌐 Sito Web</a>` : '';
           return `<div class="team-card reveal${i?' reveal-delay-'+i:''}">
             ${photoHTML}
             <div class="team-info">
@@ -125,6 +126,7 @@ async function loadCMS() {
                 <a href="tel:${t.telefono}" class="team-action team-action-phone" onclick="trackPhone('${t.nome}')">📞 Chiama</a>
                 <a href="https://wa.me/39${t.telefono}?text=${encodeURIComponent(t.whatsapp_msg)}" target="_blank" class="team-action team-action-wa" onclick="trackWhatsApp('${t.nome}')">💬 WhatsApp</a>
                 <a href="https://www.instagram.com/${igName}/" target="_blank" class="team-action team-action-ig">📷 Instagram</a>
+                ${siteLink}
               </div>
             </div>
           </div>`;

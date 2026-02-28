@@ -421,9 +421,10 @@ function renderMembro(item, i) {
     <div class="field-row-3"><div><label>Telefono</label><input type="text" class="team-tel" value="${item.telefono||''}"></div>
     <div><label>Messaggio WhatsApp</label><input type="text" class="team-wa" value="${esc(item.whatsapp_msg)}"></div>
     <div><label>Instagram (senza @)</label><input type="text" class="team-ig" value="${item.instagram||''}"></div></div>
-    <label>Nome file foto (vuoto = iniziali)</label><input type="text" class="team-foto" value="${item.foto||''}" placeholder="es. foto-ilenia.jpg"></div>`;
+    <div class="field-row"><div><label>Nome file foto (vuoto = iniziali)</label><input type="text" class="team-foto" value="${item.foto||''}" placeholder="es. foto-ilenia.jpg"></div>
+    <div><label>Sito Web (vuoto = nessun link)</label><input type="text" class="team-sito" value="${item.sito_web||''}" placeholder="es. https://ileniatagliaferro.it"></div></div></div>`;
 }
-function addMembro() { document.getElementById('teamList').insertAdjacentHTML('beforeend', renderMembro({nome:'',ruolo:'',bio:'',telefono:'',whatsapp_msg:'',instagram:'',foto:''}, 0)); }
+function addMembro() { document.getElementById('teamList').insertAdjacentHTML('beforeend', renderMembro({nome:'',ruolo:'',bio:'',telefono:'',whatsapp_msg:'',instagram:'',foto:'',sito_web:''}, 0)); }
 
 function renderMetodo(item, i) {
   return `<div class="repeater-item"><button class="remove-btn" onclick="this.parentElement.remove()">✕</button>
@@ -450,7 +451,7 @@ function collectAll() {
     citazione: g('citazione'),
     servizi: collectItems('serviziList', el => ({icona:el.querySelector('.serv-icona').value, titolo:el.querySelector('.serv-titolo').value, testo:el.querySelector('.serv-testo').value})),
     fasce: collectItems('fasceList', el => ({emoji:el.querySelector('.fas-emoji').value, titolo:el.querySelector('.fas-titolo').value, testo:el.querySelector('.fas-testo').value})),
-    team: collectItems('teamList', el => ({nome:el.querySelector('.team-nome').value, ruolo:el.querySelector('.team-ruolo').value, bio:el.querySelector('.team-bio').value, telefono:el.querySelector('.team-tel').value, whatsapp_msg:el.querySelector('.team-wa').value, instagram:el.querySelector('.team-ig').value, foto:el.querySelector('.team-foto').value})),
+    team: collectItems('teamList', el => ({nome:el.querySelector('.team-nome').value, ruolo:el.querySelector('.team-ruolo').value, bio:el.querySelector('.team-bio').value, telefono:el.querySelector('.team-tel').value, whatsapp_msg:el.querySelector('.team-wa').value, instagram:el.querySelector('.team-ig').value, foto:el.querySelector('.team-foto').value, sito_web:el.querySelector('.team-sito').value})),
     metodologie: collectItems('metodoList', el => ({icona:el.querySelector('.met-icona').value, titolo:el.querySelector('.met-titolo').value, testo:el.querySelector('.met-testo').value})),
     faq: collectItems('faqList', el => ({domanda:el.querySelector('.faq-d').value, risposta:el.querySelector('.faq-r').value})),
     contatti: { telefono_principale:g('cont_tel'), email:g('cont_email'), whatsapp_msg:g('cont_wa_msg'), instagram_studio:g('cont_ig'), indirizzo:g('cont_indirizzo'), orari:g('cont_orari'), mappa_embed:g('cont_mappa') }

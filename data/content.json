@@ -11,26 +11,82 @@
     "titolo": "Uno spazio per il benessere nella sua <em>totalità</em>",
     "testo": "Psiche Holos nasce dalla volontà di creare uno spazio che accolga il bisogno psicologico nella sua totalità. Offriamo percorsi di psicoterapia individuale e di gruppo, lavorando su ansia, depressione, difficoltà relazionali ed emotive.",
     "valori": [
-      {"icona": "🌿", "titolo": "Ascolto e accoglienza", "testo": "Uno spazio sicuro dove raccontarsi per come si è oggi, senza giudizio."},
-      {"icona": "🤝", "titolo": "Approccio integrato", "testo": "Diverse metodologie nel rispetto dell'unicità di ogni persona."},
-      {"icona": "🌱", "titolo": "Crescita e cura", "testo": "Il cambiamento richiede tempo, fiducia e relazione."}
+      {
+        "icona": "🌿",
+        "titolo": "Ascolto e accoglienza",
+        "testo": "Uno spazio sicuro dove raccontarsi per come si è oggi, senza giudizio."
+      },
+      {
+        "icona": "🤝",
+        "titolo": "Approccio integrato",
+        "testo": "Diverse metodologie nel rispetto dell'unicità di ogni persona."
+      },
+      {
+        "icona": "🌱",
+        "titolo": "Crescita e cura",
+        "testo": "Il cambiamento richiede tempo, fiducia e relazione."
+      }
     ]
   },
   "citazione": "\"Il primo passo non deve essere perfetto. Deve solo essere fatto.\"",
   "servizi": [
-    {"icona": "💬", "titolo": "Psicoterapia individuale", "testo": "Un percorso personale per affrontare ansia, depressione, difficoltà emotive e relazionali."},
-    {"icona": "👥", "titolo": "Percorsi di gruppo", "testo": "Esperienze condivise di crescita, confronto e sostegno reciproco."},
-    {"icona": "🖥️", "titolo": "Terapia online", "testo": "Sedute a distanza con la stessa qualità dello studio."},
-    {"icona": "📚", "titolo": "Supporto scolastico", "testo": "Metodo di studio, potenziamento lettura, scrittura e calcolo."},
-    {"icona": "👪", "titolo": "Sostegno alla genitorialità", "testo": "Accompagnamento nelle sfide educative e relazionali."},
-    {"icona": "🔒", "titolo": "Incontri protetti", "testo": "Gestione di incontri in contesti delicati e supervisionati."}
+    {
+      "icona": "💬",
+      "titolo": "Psicoterapia individuale",
+      "testo": "Un percorso personale per affrontare ansia, depressione, difficoltà emotive e relazionali."
+    },
+    {
+      "icona": "👥",
+      "titolo": "Percorsi di gruppo",
+      "testo": "Esperienze condivise di crescita, confronto e sostegno reciproco."
+    },
+    {
+      "icona": "🖥️",
+      "titolo": "Terapia online",
+      "testo": "Sedute a distanza con la stessa qualità dello studio."
+    },
+    {
+      "icona": "📚",
+      "titolo": "Supporto scolastico",
+      "testo": "Metodo di studio, potenziamento lettura, scrittura e calcolo."
+    },
+    {
+      "icona": "👪",
+      "titolo": "Sostegno alla genitorialità",
+      "testo": "Accompagnamento nelle sfide educative e relazionali."
+    },
+    {
+      "icona": "🔒",
+      "titolo": "Incontri protetti",
+      "testo": "Gestione di incontri in contesti delicati e supervisionati."
+    }
   ],
   "fasce": [
-    {"emoji": "👶", "titolo": "Infanzia", "testo": "Supporto nella crescita"},
-    {"emoji": "🧒", "titolo": "Adolescenza", "testo": "Scoperta di sé"},
-    {"emoji": "🧑", "titolo": "Età adulta", "testo": "Sfide quotidiane"},
-    {"emoji": "👨‍👩‍👧", "titolo": "Genitorialità", "testo": "Il ruolo più importante"},
-    {"emoji": "👴", "titolo": "Terza età", "testo": "Benessere in ogni momento"}
+    {
+      "emoji": "👶",
+      "titolo": "Infanzia",
+      "testo": "Supporto nella crescita"
+    },
+    {
+      "emoji": "🧒",
+      "titolo": "Adolescenza",
+      "testo": "Scoperta di sé"
+    },
+    {
+      "emoji": "🧑",
+      "titolo": "Età adulta",
+      "testo": "Sfide quotidiane"
+    },
+    {
+      "emoji": "👨‍👩‍👧",
+      "titolo": "Genitorialità",
+      "testo": "Il ruolo più importante"
+    },
+    {
+      "emoji": "👴",
+      "titolo": "Terza età",
+      "testo": "Benessere in ogni momento"
+    }
   ],
   "team": [
     {
@@ -40,7 +96,8 @@
       "telefono": "3928215608",
       "whatsapp_msg": "Buongiorno Dott.ssa Tagliaferro",
       "instagram": "psicologa_ileniatagliaferro",
-      "foto": ""
+      "foto": "foto-ilenia.jpg",
+      "sito_web": "https://ileniatagliaferro.it"
     },
     {
       "nome": "Dott.ssa Anna Marini",
@@ -49,7 +106,7 @@
       "telefono": "3283570032",
       "whatsapp_msg": "Buongiorno Dott.ssa Marini",
       "instagram": "annamarini_psico",
-      "foto": ""
+      "foto": "foto-anna.jpg"
     },
     {
       "nome": "Dott.ssa Valentina Nicolai",
@@ -58,22 +115,56 @@
       "telefono": "3386086727",
       "whatsapp_msg": "Buongiorno Dott.ssa Nicolai",
       "instagram": "valentina.nicolai.psy",
-      "foto": ""
+      "foto": "foto-valentina.jpg"
     }
   ],
   "metodologie": [
-    {"icona": "🧠", "titolo": "Tecniche Cognitive e Comportamentali", "testo": "Approccio basato sull'evidenza scientifica per modificare schemi di pensiero disfunzionali."},
-    {"icona": "🧘", "titolo": "Mindfulness", "testo": "Pratiche di consapevolezza per ridurre lo stress e coltivare equilibrio emotivo."},
-    {"icona": "🎭", "titolo": "Psicodramma", "testo": "Esplorazione di dinamiche interne e relazionali attraverso la messa in scena."},
-    {"icona": "🌊", "titolo": "Training Autogeno", "testo": "Rilassamento profondo per l'autoregolazione e la gestione dell'ansia."}
+    {
+      "icona": "🧠",
+      "titolo": "Tecniche Cognitive e Comportamentali",
+      "testo": "Approccio basato sull'evidenza scientifica per modificare schemi di pensiero disfunzionali."
+    },
+    {
+      "icona": "🧘",
+      "titolo": "Mindfulness",
+      "testo": "Pratiche di consapevolezza per ridurre lo stress e coltivare equilibrio emotivo."
+    },
+    {
+      "icona": "🎭",
+      "titolo": "Psicodramma",
+      "testo": "Esplorazione di dinamiche interne e relazionali attraverso la messa in scena."
+    },
+    {
+      "icona": "🌊",
+      "titolo": "Training Autogeno",
+      "testo": "Rilassamento profondo per l'autoregolazione e la gestione dell'ansia."
+    }
   ],
   "faq": [
-    {"domanda": "Come funziona il primo appuntamento?", "risposta": "Il primo colloquio è un momento di conoscenza reciproca. Non serve preparare nulla di specifico: si racconta il motivo per cui si è chiesto aiuto, con i propri tempi. Insieme si valuta il percorso più adatto. Dura circa 50 minuti."},
-    {"domanda": "Quanto dura un percorso di psicoterapia?", "risposta": "La durata varia in base alla persona e alle esigenze. Un percorso breve può durare 8-12 sedute, percorsi più approfonditi possono protrarsi per diversi mesi. Ne parliamo insieme fin dal primo incontro."},
-    {"domanda": "Fate anche sedute online?", "risposta": "Sì, tutte le professioniste dello studio offrono la possibilità di sedute online tramite videochiamata. La qualità e la riservatezza sono le stesse delle sedute in presenza."},
-    {"domanda": "Come posso prenotare?", "risposta": "Puoi contattarci via WhatsApp, email o telefono. Scrivici un messaggio e ti risponderemo in giornata per fissare un primo appuntamento."},
-    {"domanda": "Lo studio è accessibile?", "risposta": "Lo studio si trova in Via Guido Zadei 60 a Brescia, con possibilità di parcheggio nelle vicinanze. Per eventuali esigenze di accessibilità, contattaci e troveremo la soluzione migliore."},
-    {"domanda": "Lavorate con bambini e adolescenti?", "risposta": "Assolutamente sì. Il nostro team lavora con tutte le fasce d'età: infanzia, adolescenza, età adulta, genitorialità e terza età. La Dott.ssa Nicolai è inoltre specializzata in psicologia scolastica, DSA e BES."}
+    {
+      "domanda": "Come funziona il primo appuntamento?",
+      "risposta": "Il primo colloquio è un momento di conoscenza reciproca. Non serve preparare nulla di specifico: si racconta il motivo per cui si è chiesto aiuto, con i propri tempi. Insieme si valuta il percorso più adatto. Dura circa 50 minuti."
+    },
+    {
+      "domanda": "Quanto dura un percorso di psicoterapia?",
+      "risposta": "La durata varia in base alla persona e alle esigenze. Un percorso breve può durare 8-12 sedute, percorsi più approfonditi possono protrarsi per diversi mesi. Ne parliamo insieme fin dal primo incontro."
+    },
+    {
+      "domanda": "Fate anche sedute online?",
+      "risposta": "Sì, tutte le professioniste dello studio offrono la possibilità di sedute online tramite videochiamata. La qualità e la riservatezza sono le stesse delle sedute in presenza."
+    },
+    {
+      "domanda": "Come posso prenotare?",
+      "risposta": "Puoi contattarci via WhatsApp, email o telefono. Scrivici un messaggio e ti risponderemo in giornata per fissare un primo appuntamento."
+    },
+    {
+      "domanda": "Lo studio è accessibile?",
+      "risposta": "Lo studio si trova in Via Guido Zadei 60 a Brescia, con possibilità di parcheggio nelle vicinanze. Per eventuali esigenze di accessibilità, contattaci e troveremo la soluzione migliore."
+    },
+    {
+      "domanda": "Lavorate con bambini e adolescenti?",
+      "risposta": "Assolutamente sì. Il nostro team lavora con tutte le fasce d'età: infanzia, adolescenza, età adulta, genitorialità e terza età. La Dott.ssa Nicolai è inoltre specializzata in psicologia scolastica, DSA e BES."
+    }
   ],
   "contatti": {
     "telefono_principale": "3928215608",
