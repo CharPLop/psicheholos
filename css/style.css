@@ -183,18 +183,18 @@ section { padding: 100px 24px; }
 /* ═══ TEAM ═══ */
 .team { background: var(--cream); }
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
-.team-card { background: var(--white); border-radius: 24px; overflow: hidden; transition: all 0.4s; border: 1px solid var(--cream-dark); }
+.team-card { background: var(--white); border-radius: 24px; overflow: hidden; transition: all 0.4s; border: 1px solid var(--cream-dark); display: flex; flex-direction: column; }
 .team-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(74,103,65,0.12); }
 .team-avatar { height: 180px; display: flex; align-items: center; justify-content: center; position: relative; }
 .team-card:nth-child(1) .team-avatar { background: linear-gradient(135deg, #E8F0E4, #C5D4BF); }
 .team-card:nth-child(2) .team-avatar { background: linear-gradient(135deg, #D4E2CE, #B5C8AD); }
 .team-card:nth-child(3) .team-avatar { background: linear-gradient(135deg, #DCE8D6, #C1D3B9); }
 .team-avatar-initial { font-family: var(--serif); font-size: 3rem; font-weight: 500; color: var(--green-dark); opacity: 0.6; }
-.team-info { padding: 24px 24px 28px; }
+.team-info { padding: 24px 24px 28px; flex: 1; display: flex; flex-direction: column; }
 .team-info h3 { font-family: var(--serif); font-size: 1.2rem; color: var(--green-dark); margin-bottom: 4px; }
 .team-role { font-size: 0.82rem; color: var(--green-light); font-weight: 600; letter-spacing: 0.5px; margin-bottom: 14px; display: block; }
-.team-info p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; margin-bottom: 18px; }
-.team-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.team-info p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; margin-bottom: 0; }
+.team-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 18px; }
 .team-action { display: inline-flex; align-items: center; gap: 6px; padding: 12px 18px; border-radius: 30px; font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: all 0.3s; min-height: 44px; box-sizing: border-box; }
 .team-action-phone { background: var(--cream); color: var(--green-primary); }
 .team-action-phone:hover { background: var(--green-primary); color: white; }
