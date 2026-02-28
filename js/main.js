@@ -3,8 +3,17 @@
 // ── NAV ──
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
-function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
-function closeNav() { document.getElementById('navLinks').classList.remove('open'); }
+function toggleNav() {
+  var nl = document.getElementById('navLinks');
+  nl.classList.toggle('open');
+  document.querySelector('.hamburger').classList.toggle('active');
+  document.body.style.overflow = nl.classList.contains('open') ? 'hidden' : '';
+}
+function closeNav() {
+  document.getElementById('navLinks').classList.remove('open');
+  document.querySelector('.hamburger').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
 // ── SCROLL REVEAL ──
 const obs = new IntersectionObserver(es => es.forEach(e => {

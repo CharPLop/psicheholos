@@ -101,8 +101,11 @@ nav.scrolled {
 .nav-links a::after { content:''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green-light); transition: width 0.3s; }
 .nav-links a:hover::after { width: 100%; }
 .nav-links a:hover { color: var(--green-light); }
-.hamburger { display: none; cursor: pointer; background: none; border: none; flex-direction: column; gap: 5px; padding: 4px; }
+.hamburger { display: none; cursor: pointer; background: none; border: none; flex-direction: column; gap: 5px; padding: 4px; position: relative; z-index: 101; }
 .hamburger span { display: block; width: 24px; height: 2px; background: var(--green-dark); transition: all 0.3s; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
 /* ═══ HERO ═══ */
 .hero {
