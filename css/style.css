@@ -195,7 +195,7 @@ section { padding: 100px 24px; }
 .team-role { font-size: 0.82rem; color: var(--green-light); font-weight: 600; letter-spacing: 0.5px; margin-bottom: 14px; display: block; }
 .team-info p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; margin-bottom: 18px; }
 .team-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-.team-action { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 30px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+.team-action { display: inline-flex; align-items: center; gap: 6px; padding: 12px 18px; border-radius: 30px; font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: all 0.3s; min-height: 44px; box-sizing: border-box; }
 .team-action-phone { background: var(--cream); color: var(--green-primary); }
 .team-action-phone:hover { background: var(--green-primary); color: white; }
 .team-action-wa { background: #E8F8EE; color: #128C7E; }
