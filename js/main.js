@@ -4,13 +4,13 @@
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
 function toggleNav() {
-  var nl = document.getElementById('navLinks');
-  nl.classList.toggle('open');
+  var nav = document.getElementById('nav');
+  nav.classList.toggle('nav-open');
   document.querySelector('.hamburger').classList.toggle('active');
-  document.body.style.overflow = nl.classList.contains('open') ? 'hidden' : '';
+  document.body.style.overflow = nav.classList.contains('nav-open') ? 'hidden' : '';
 }
 function closeNav() {
-  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('nav').classList.remove('nav-open');
   document.querySelector('.hamburger').classList.remove('active');
   document.body.style.overflow = '';
 }

@@ -346,8 +346,23 @@ footer { background: var(--green-dark); color: rgba(247,244,236,0.6); padding: 4
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(247,244,236,0.98); backdrop-filter: blur(20px); justify-content: center; align-items: center; gap: 28px; z-index: 99; }
-  .nav-links.open a { font-size: 1.3rem; }
+  nav.nav-open {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(247,244,236,0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  nav.nav-open .nav-logo { position: absolute; top: 18px; left: 20px; }
+  nav.nav-open .hamburger { position: absolute; top: 18px; right: 20px; }
+  nav.nav-open .nav-links {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 28px;
+    list-style: none;
+  }
+  nav.nav-open .nav-links a { font-size: 1.3rem; }
   .chi-grid, .prenota-inner, .dove-grid { grid-template-columns: 1fr; gap: 40px; }
   .chi-visual { height: 280px; }
   .servizi-grid, .team-grid, .metodo-grid { grid-template-columns: 1fr; }
@@ -356,5 +371,6 @@ footer { background: var(--green-dark); color: rgba(247,244,236,0.6); padding: 4
   .fascia:last-child { border-bottom: none; }
   nav { padding: 14px 20px; }
   .hero { overflow: visible; min-height: auto; padding-top: 100px; padding-bottom: 60px; }
+  .scroll-hint { display: none; }
   section { padding: 70px 20px; }
 }
