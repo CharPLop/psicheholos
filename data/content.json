@@ -9,7 +9,7 @@
   },
   "chi_siamo": {
     "titolo": "Uno spazio per il benessere nella sua <em>totalità</em>",
-    "testo": "Psiche Holos nasce dalla volontà di creare uno spazio che accolga il bisogno psicologico nella sua totalità. Offriamo percorsi di psicoterapia individuale e di gruppo, lavorando su ansia, depressione, difficoltà relazionali ed emotive.",
+    "testo": "Psiche Holos nasce dalla volontà di creare uno spazio di ascolto, accoglienza e cura, pensato per accogliere il bisogno psicologico nella sua totalità. Ci prendiamo cura della persona in ogni fase della vita: infanzia, adolescenza, età adulta, genitorialità e terza età. Offriamo percorsi di psicoterapia individuali e di gruppo, lavorando su ansia, depressione, difficoltà emotive e relazionali. Accompagniamo anche studenti nel costruire un metodo di studio più efficace e consapevole, con percorsi di potenziamento di lettura, scrittura e calcolo. Utilizziamo diverse metodologie nel rispetto dell'unicità di ogni persona: tecniche cognitive e comportamentali, mindfulness, training autogeno, psicodramma.",
     "valori": [
       {
         "icona": "🌿",
@@ -92,7 +92,7 @@
     {
       "nome": "Dott.ssa Ilenia Tagliaferro",
       "ruolo": "Psicologa Clinica • Psicoterapeuta CBT",
-      "bio": "Bambini, adolescenti e adulti. Ansia, difficoltà emotive e relazionali. Spazio sicuro di ascolto e crescita.",
+      "bio": "Psicologa clinica e psicoterapeuta cognitivo-comportamentale. Accompagno bambini, adolescenti e adulti in percorsi di supporto psicologico e psicoterapia, offrendo uno spazio sicuro di ascolto, accoglienza e crescita. Mi occupo di ansia, difficoltà emotive e relazionali, aiutando le persone a ritrovare equilibrio e a costruire nuove risorse per affrontare la quotidianità.",
       "telefono": "3928215608",
       "whatsapp_msg": "Buongiorno Dott.ssa Tagliaferro",
       "instagram": "psicologa_ileniatagliaferro",
@@ -102,7 +102,7 @@
     {
       "nome": "Dott.ssa Anna Marini",
       "ruolo": "Psicologa Clinica • Psicoterapeuta",
-      "bio": "20+ anni di esperienza. Approccio psicodinamico con Mindfulness, Training Autogeno, Psicodramma, EMDR.",
+      "bio": "Psicologa clinica e psicoterapeuta con oltre 20 anni di esperienza. Mi occupo di sostegno psicologico e psicoterapia per adolescenti, adulti e famiglie. Il mio approccio psicodinamico integra diverse metodologie — Mindfulness, Training Autogeno, Psicodramma ed EMDR — in base alle caratteristiche e ai bisogni specifici di ognuno. Il mio obiettivo è promuovere benessere, consapevolezza e crescita individuale.",
       "telefono": "3283570032",
       "whatsapp_msg": "Buongiorno Dott.ssa Marini",
       "instagram": "annamarini_psico",
@@ -111,7 +111,7 @@
     {
       "nome": "Dott.ssa Valentina Nicolai",
       "ruolo": "Psicologa Scolastica",
-      "bio": "DSA, BES, metodo di studio personalizzato. Lavoro di rete con famiglie e insegnanti.",
+      "bio": "Psicologa scolastica. Accompagno bambini e ragazzi nel loro percorso scolastico, aiutandoli a trovare un metodo di studio personalizzato che valorizzi i punti di forza e le risorse di ciascuno. Creo percorsi di rinforzo degli apprendimenti e di costruzione di strumenti compensativi, con uno sguardo attento al benessere emotivo. Credo profondamente nel lavoro di rete con famiglie e insegnanti.",
       "telefono": "3386086727",
       "whatsapp_msg": "Buongiorno Dott.ssa Nicolai",
       "instagram": "valentina.nicolai.psy",
@@ -148,6 +148,22 @@
     {
       "domanda": "Quanto dura un percorso di psicoterapia?",
       "risposta": "La durata varia in base alla persona e alle esigenze. Un percorso breve può durare 8-12 sedute, percorsi più approfonditi possono protrarsi per diversi mesi. Ne parliamo insieme fin dal primo incontro."
+    },
+    {
+      "domanda": "Devo raccontare tutto alla prima seduta?",
+      "risposta": "Assolutamente no. La prima seduta non è un interrogatorio. Racconti ciò che ti senti, con i tuoi tempi. È uno spazio di incontro, conoscenza e ascolto — per conoscerci, capire cosa ti ha portato fin qui e costruire insieme un percorso possibile."
+    },
+    {
+      "domanda": "E se piango durante la seduta?",
+      "risposta": "Le emozioni sono benvenute. Piangere non è un fallimento, è un modo naturale di esprimere ciò che si sente. Lo studio è uno spazio sicuro e senza giudizio, dove ogni emozione ha il diritto di essere accolta."
+    },
+    {
+      "domanda": "Se non mi sento subito meglio, la terapia non funziona?",
+      "risposta": "Il cambiamento richiede tempo, fiducia e cura. La prima seduta non serve a risolvere tutto — è il primo passo per capirti meglio. Non serve stare meglio subito: il percorso si costruisce insieme, seduta dopo seduta."
+    },
+    {
+      "domanda": "Mio figlio fa fatica a scuola, è svogliato?",
+      "risposta": "Le difficoltà scolastiche non sono un segno di incapacità o svogliatezza. Spesso sono un segnale che qualcosa non sta funzionando come dovrebbe. Un ragazzo che fa fatica può essere stanco, in ansia, confuso, oppure non ha ancora trovato il metodo giusto per lui. La fatica va ascoltata, non eliminata in fretta."
     },
     {
       "domanda": "Fate anche sedute online?",
